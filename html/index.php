@@ -9,7 +9,7 @@
 <body>
 <?php
 try {
-    $dbh = new PDO('mysql:host=mysql5.7-trial2;dbname=test', 'root', 'root');
+    $dbh = new PDO('mysql:host=php_smarty_db_1;dbname=test', 'root', 'root');
     foreach($dbh->query('select * from test') as $row) {
         echo $row['text'] . '<br>';
     }

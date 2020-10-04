@@ -1,15 +1,21 @@
 version: "3"
 
 services:
-  php:
-    image: php7.2-apache-trial2
+  web:
+    # image: php7.2-apache-trial2
+    build: .
     volumes:
       - ./html:/var/www/html
     ports:
       - 8000:80
-    container_name: php7.2-trial2
-  mysql:
-    image: mysql:5.7
+    depends_on:
+      - db
+    privileged: true
+    # container_name: php7.2-trial2
+
+  db:
+    # image: mysql:5.7
+    image: mariadb:10.3
     volumes:
       - ./mysql:/var/lib/mysql
     environment:
@@ -17,4 +23,4 @@ services:
       - MYSQL_DATABASE=test
       - MYSQL_USER=test
       - MYSQL_PASSWORD=test
-    container_name: mysql5.7-trial2
+    # container_name: mysql5.7-trial2
